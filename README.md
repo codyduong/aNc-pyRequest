@@ -40,12 +40,14 @@ repos:
 
 # Utilizing for yourself
 Unfortunately poetry wasn't complying so there aren't any dependencies in this repo. If you need to know, any versions of requests should work, and python 3.9+. But I reckon since it's so simple, that any combination of the versions should work... But don't quote me on that.
+
 Simply change the relevant information:
-- Create a token.txt in the same directory as python.py and input your personal access token in order to utilize it, however this step is optional and is not necessary for it to function. It is recommended if you want to access private repos.
 ```python
 6 | USERNAME = 'codyduong'
 7 | REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
 ```
+For using a personal token, create a token.txt in the same directory as python.py, this step is optional and is not necessary for it to function. It is recommended if you want to access private repos.
+
 The first time you run request.py it will export a whitelist.txt, where you have to set the true/false values for repos you want to export to YML
 ```
 aNc_pyRequest true
