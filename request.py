@@ -3,42 +3,8 @@ import json
 import os.path
 
 
-"""
-Relevant dictionary values I want to store in YAML
-name 
-private -> have to switch the token for utilization of this, otherwise this will always be false
-html_url -> Used for permalinking (not the API Url for the Repo)
-description -> Quick thumbnail Description
-languages_url -> Gives the GitHub API Url again, have to input back into requests.get ... An example of json given after request below. (Lang && Lines of Code)
-    |   {
-    |     "SCSS": 26226,
-    |     "HTML": 13103,
-    |     "Ruby": 3664,
-    |     "Shell": 384
-    |   }
-    --> Calculate relevant percentages, give to YAML which then is used by Liquid and JS to create a cool visual. Or something...
-created_at -> YAML
-updated_at -> YAML
-
----YAML---
-repos:
-
-- name:
-  private:
-  permalink:
-  descrption:
-  languages: <-- supports only 3 languages (maybe I'll change this)
-    - language: SCSS
-      LoC: 26226
-    - language2: HTML
-      LoC: 13103
-    - language3: Ruby
-      LoC: 3664
-    - other: Other
-      LoC: 384
-  created:
-  updated:
-"""
+USERNAME = 'codyduong'
+REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
 
 
 def runRequest(u):
@@ -47,7 +13,7 @@ def runRequest(u):
         token = f.read()
     if token: 
         #print("runRequest with Token: %s"  % (token))
-        return(requests.get(u, auth=('codyduong', token)))
+        return(requests.get(u, auth=(USERNAME, token)))
     else: 
         print("runRequest w/out Token")
         return(requests.get(u))
@@ -127,7 +93,7 @@ def convertRequest(l):
 
 
 if __name__ == "__main__":
-    r = runRequest('https://api.github.com/users/codyduong/repos')
+    r = runRequest(GITHUB_LINK)
     if r.status_code == 200: 
         print('200 OK')
         convertRequest(r.json())
