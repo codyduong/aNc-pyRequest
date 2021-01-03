@@ -103,7 +103,12 @@ def convertRequest(l):
             whitelist = dict(pref)
             for repo in l: 
                 repoName = repo["name"]
-                if True:
+                try:
+                    whitelist[repoName]     #a dumb way to see if it's in the whitelist
+                except:
+                    print("Missing, creating %s..." % repoName)
+                    f.writelines("%s false\n" % repoName)
+                else:
                     if whitelist[repoName] == 'true':
                         print("Whitelisted, converting %s..." % repoName)
                         lines = toYML(repo, lines)
@@ -112,9 +117,6 @@ def convertRequest(l):
                             g.writelines(lines)                                
                     else:
                         print("Blacklisted, ignoring %s..." % repoName)
-                else:
-                    print("Missing, creating %s..." % repoName)
-                    f.writelines("%s false\n" % repoName)
     else:
         print("Creating new whitelist.txt, YAML not exported.")
         with open("whitelist.txt", "w") as f:
