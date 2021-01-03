@@ -1,5 +1,5 @@
-aNc_pyRequest false
-artNcode false
+aNc_pyRequest true
+artNcode true
 CC-Programs false
 FTC9108-SkyStone false
 Infidustry false
