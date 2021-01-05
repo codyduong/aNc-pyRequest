@@ -46,7 +46,7 @@ Simply change the relevant information:
 6 | USERNAME = 'codyduong'
 7 | REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
 ```
-For using a personal token, create a token.txt in the same directory as python.py, this step is optional and is not necessary for it to function. It is recommended if you want to access private repos.
+For using a personal token, create a token.txt in the same directory as request.py, this step is optional and is not necessary for it to function. It is recommended if you want to access private repos.
 
 The first time you run request.py it will export a whitelist.txt, where you have to set the true/false values for repos you want to export to YML
 ```
