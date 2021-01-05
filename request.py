@@ -93,7 +93,7 @@ def convertRequest(l):
 
 
 if __name__ == "__main__":
-    r = runRequest(GITHUB_LINK)
+    r = runRequest(REPOS_LINK)
     if r.status_code == 200: 
         print('200 OK')
         convertRequest(r.json())
