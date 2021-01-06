@@ -29,34 +29,52 @@ def ISO8601toString(i):
     return('%s %s, %s' % (month, day, year))
 
 
+def colorFromLang(lang): #reads from colors.json which was taken from here: https://github.com/ozh/github-colors
+    with open('colors.json', "r") as f:
+        cjson = f.read()
+        cdata = json.loads(cjson)
+        try:
+            return("'%s'" % cdata[lang]['color'])
+        except:
+            print("No color detected for this language: %s, defaulting: White" % (lang))
+            return("white")
+
+
 def handleLangAPI(langs):
     langList = []
+    colorList = []
     percentList = []
     S = 0
     for lang in langs:
         S += langs[lang]
         langList.append(lang)
+        colorList.append(colorFromLang(lang))
     for lang in langs:
         percent = round((langs[lang]/S) * 100, 2)
         if len(percentList) < 3:
             percentList.append(percent)
         else:
             try:
-                percentList[3] = percentList[3] + percent
+                percentList[3] = float(percentList[3]) + percent
             except:
-                percentList.append(0)
-                percentList[3] = percentList[3] + percent         
+                percentList.append('0')
+                percentList[3] = float(percentList[3]) + percent         
     if len(langList) < 3:
         for i in range(3 - len(langList)):
             langList.append('')
+    if len(colorList) < 3:
+        for i in range(3 - len(colorList)):
+            colorList.append('')
     if len(percentList) < 4:
         for i in range(4 - len(percentList)):
-            percentList.append('')
-    print(langList)
-    print(percentList)
-    s = ('  languages:\n    - language1: %s\n      percent: %s\n    - language2: %s\n      percent: %s\n    - language3: %s\n      percent: %s\n    - other:\n      percent: %s\n' %
-        (langList[0], percentList[0], langList[1], percentList[1], langList[2],  percentList[2], percentList[3]))
-    return s
+            percentList.append('0')
+    for i in range(len(percentList)):
+        percentList[i] = str(percentList[i]) + '%'
+    l1 = ('  languages:\n    - language1: %s\n      color: %s\n      percent: %s\n' % (langList[0], colorList[0], percentList[0]))
+    l2 = ('    - language2: %s\n      color: %s\n      percent: %s\n' % (langList[1], colorList[1], percentList[1]))
+    l3 = ('    - language3: %s\n      color: %s\n      percent: %s\n' % (langList[2], colorList[2], percentList[2]))
+    l4 = ('    - other: \n      color: white\n      percent: %s\n' % (percentList[3]))
+    return (l1+l2+l3+l4)
 
 
 def toYML(repo, lines):
