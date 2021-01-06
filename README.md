@@ -10,32 +10,40 @@ repos:
   permalink: https://github.com/codyduong/aNc_pyRequest
   description: A personal tool used to access GitHub's REST API and use it to create YML for the artNcode repository.
   languages:
-    - language1: Python
-      LoC: 4429
-    - language2: 
-      LoC: 0
-    - language3: 
-      LoC: 0
-    - other:
-      LoC: 0
+    - name: Python
+      color: '#3572A5'
+      percent: 100.0%
+    - name: 
+      color: 
+      percent: 0%
+    - name: 
+      color: 
+      percent: 0%
+    - name: other
+      color: white
+      percent: 0%
   created: Jan 03, 2021
-  updated: Jan 03, 2021
+  updated: Jan 06, 2021
 
 - name: artNcode
   private: False
   permalink: https://github.com/codyduong/artNcode
   description: My website.
   languages:
-    - language1: SCSS
-      LoC: 26226
-    - language2: HTML
-      LoC: 13103
-    - language3: Ruby
-      LoC: 3664
-    - other:
-      LoC: 384
+    - name: SCSS
+      color: '#c6538c'
+      percent: 58.21%
+    - name: HTML
+      color: '#e34c26'
+      percent: 32.81%
+    - name: Ruby
+      color: '#701516'
+      percent: 8.13%
+    - name: other
+      color: white
+      percent: 0.85%
   created: Sep 04, 2020
-  updated: Jan 03, 2021
+  updated: Jan 06, 2021
 ```
 
 # Utilizing for yourself
