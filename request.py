@@ -30,23 +30,32 @@ def ISO8601toString(i):
 
 
 def handleLangAPI(langs):
-    lang1, lang2, lang3, loc1, loc2, loc3, loc4 = ('','','',0,0,0,0)
-    i = 0
+    langList = []
+    percentList = []
+    S = 0
     for lang in langs:
-        if i==0:
-            lang1 = lang
-            loc1 = langs[lang]
-        elif i==1:
-            lang2 = lang
-            loc2 = langs[lang]
-        elif i==2:
-            lang3 = lang
-            loc3 = langs[lang]
-        else: 
-            loc4 += langs[lang]
-        i+=1
-    s = ('  languages:\n    - language1: %s\n      LoC: %s\n    - language2: %s\n      LoC: %s\n    - language3: %s\n      LoC: %s\n    - other:\n      LoC: %s\n' %
-        (lang1, loc1, lang2, loc2, lang3, loc3, loc4))
+        S += langs[lang]
+        langList.append(lang)
+    for lang in langs:
+        percent = round((langs[lang]/S) * 100, 2)
+        if len(percentList) < 3:
+            percentList.append(percent)
+        else:
+            try:
+                percentList[3] = percentList[3] + percent
+            except:
+                percentList.append(0)
+                percentList[3] = percentList[3] + percent         
+    if len(langList) < 3:
+        for i in range(3 - len(langList)):
+            langList.append('')
+    if len(percentList) < 4:
+        for i in range(4 - len(percentList)):
+            percentList.append('')
+    print(langList)
+    print(percentList)
+    s = ('  languages:\n    - language1: %s\n      percent: %s\n    - language2: %s\n      percent: %s\n    - language3: %s\n      percent: %s\n    - other:\n      percent: %s\n' %
+        (langList[0], percentList[0], langList[1], percentList[1], langList[2],  percentList[2], percentList[3]))
     return s
 
 
