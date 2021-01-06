@@ -70,10 +70,10 @@ def handleLangAPI(langs):
             percentList.append('0')
     for i in range(len(percentList)):
         percentList[i] = str(percentList[i]) + '%'
-    l1 = ('  languages:\n    - language1: %s\n      color: %s\n      percent: %s\n' % (langList[0], colorList[0], percentList[0]))
-    l2 = ('    - language2: %s\n      color: %s\n      percent: %s\n' % (langList[1], colorList[1], percentList[1]))
-    l3 = ('    - language3: %s\n      color: %s\n      percent: %s\n' % (langList[2], colorList[2], percentList[2]))
-    l4 = ('    - other: \n      color: white\n      percent: %s\n' % (percentList[3]))
+    l1 = ('  languages:\n    - name: %s\n      color: %s\n      percent: %s\n' % (langList[0], colorList[0], percentList[0]))
+    l2 = ('    - name: %s\n      color: %s\n      percent: %s\n' % (langList[1], colorList[1], percentList[1]))
+    l3 = ('    - name: %s\n      color: %s\n      percent: %s\n' % (langList[2], colorList[2], percentList[2]))
+    l4 = ('    - name: other\n      color: white\n      percent: %s\n' % (percentList[3]))
     return (l1+l2+l3+l4)
 
 
