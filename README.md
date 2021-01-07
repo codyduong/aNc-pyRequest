@@ -89,3 +89,6 @@ An example of the HTML+Liquid used to parse the YML, taken from here: [artNcode 
     </div>
   </div>
 ```
+
+Here is said HTML in a full website:
+![Gif of HTML Snippet](assets/usage.gif)
