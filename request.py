@@ -5,7 +5,7 @@ import os.path
 
 USERNAME = 'codyduong'
 REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
-MIN_PERCENTAGE_THRESHOLD = 5 #Percentage threshold before the lang is tossed into the other pile
+MIN_PERCENTAGE_THRESHOLD = 0 #Percentage threshold before the lang is tossed into the other pile
 
 
 def runRequest(u):
