@@ -5,6 +5,7 @@ import os.path
 
 USERNAME = 'codyduong'
 REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
+MIN_PERCENTAGE_THRESHOLD = 5 #Percentage threshold before the lang is tossed into the other pile
 
 
 def runRequest(u):
@@ -41,9 +42,20 @@ def colorFromLang(lang): #reads from colors.json which was taken from here: http
 
 
 def handleLangAPI(langs):
-    langList = []
-    colorList = []
-    percentList = []
+    otherPercent = 0
+    string = '  languages:\n'
+    total = 0
+    for lang in langs: total+= langs[lang]
+    for lang in langs:
+        percent = ((langs[lang]/total)) * 100
+        if percent > MIN_PERCENTAGE_THRESHOLD:
+            string += ('    - name: %s\n      color: %s\n      percent: %s\n' % (lang, colorFromLang(lang), round(percent,2)))
+        else:
+            print('flushed')
+            otherPercent += percent
+    string += ('    - name: Other\n      color: white\n      percent: %s\n' % (round(otherPercent, 2)))
+    return string
+    """
     S = 0
     for lang in langs:
         S += langs[lang]
@@ -75,6 +87,7 @@ def handleLangAPI(langs):
     l3 = ('    - name: %s\n      color: %s\n      percent: %s\n' % (langList[2], colorList[2], percentList[2]))
     l4 = ('    - name: Other\n      color: white\n      percent: %s\n' % (percentList[3]))
     return (l1+l2+l3+l4)
+    """
 
 
 def toYML(repo, lines):
