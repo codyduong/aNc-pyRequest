@@ -12,16 +12,10 @@ repos:
   languages:
     - name: Python
       color: '#3572A5'
-      percent: 100.0%
-    - name: 
-      color: 
-      percent: 0%
-    - name: 
-      color: 
-      percent: 0%
-    - name: other
+      percent: 100.0
+    - name: Other
       color: white
-      percent: 0%
+      percent: 0
   created: Jan 03, 2021
   updated: Jan 06, 2021
 
@@ -32,18 +26,18 @@ repos:
   languages:
     - name: SCSS
       color: '#c6538c'
-      percent: 58.21%
+      percent: 58.04
     - name: HTML
       color: '#e34c26'
-      percent: 32.81%
+      percent: 33.0
     - name: Ruby
       color: '#701516'
-      percent: 8.13%
-    - name: other
+      percent: 8.11
+    - name: Other
       color: white
-      percent: 0.85%
+      percent: 0.85
   created: Sep 04, 2020
-  updated: Jan 06, 2021
+  updated: Jan 07, 2021
 ```
 
 # Utilizing for yourself
@@ -53,6 +47,7 @@ Simply change the relevant information:
 ```python
 6 | USERNAME = 'codyduong'
 7 | REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
+8 | MIN_PERCENTAGE_THRESHOLD = 5 #Percentage threshold before the lang is tossed into the other pile
 ```
 For using a personal token, create a token.txt in the same directory as request.py, this step is optional and is not necessary for it to function. It is recommended if you want to access private repos.
 
@@ -64,3 +59,33 @@ artNcode false
 ```
 
 Everytime afterwards it should export any repos marked with true to the YML. If your repos changed, it'll automatically add it to the list and default it to false.
+
+An example of the HTML+Liquid used to parse the YML, taken from here: [artNcode _layouts/code.html](https://github.com/codyduong/artNcode/blob/master/_layouts/code.html)
+```HTML
+<div class = "flex-container" id = "repoContainer">
+      </div>
+        {% for work in site.data.repos.repos %}
+            <div id="{{work.name}}">
+              <h1><a href="{{work.permalink}}" title="Github Repository">{{work.name | escape}}</a></h1>
+              <div style="width:100%; height: 15px; display: block; white-space: nowrap; font-size: 0px">
+                {% for item in work.languages %}
+                  {% if item.percent != '0%' %}
+                    <span title="{{item.name}} {{item.percent | append: '%'}}"><div style="background-color: {{item.color | escape}}; height: 100%; width: {{item.percent | append: '%'}}; display: inline-block"></div></span>
+                  {% endif %}
+                {% endfor %}
+              </div>
+              <br>
+              {{work.description}} <br>
+              
+              <br>
+              Updated on: {{work.updated}}<br>
+              Created on: {{work.created}}
+              <br>
+              <br>
+              <br>
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+```
