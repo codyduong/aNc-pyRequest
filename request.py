@@ -44,6 +44,7 @@ def colorFromLang(lang): #reads from colors.json which was taken from here: http
 def handleLangAPI(langs):
     otherPercent = 0
     string = '  languages:\n'
+    string_other = ''
     total = 0
     for lang in langs: total+= langs[lang]
     for lang in langs:
@@ -51,43 +52,10 @@ def handleLangAPI(langs):
         if percent > MIN_PERCENTAGE_THRESHOLD:
             string += ('    - name: %s\n      color: %s\n      percent: %s\n' % (lang, colorFromLang(lang), round(percent,2)))
         else:
-            print('flushed')
+            string_other += ('    - name: %s\n      color: %s\n      percent: %s\n' % (lang, colorFromLang(lang), round(percent,2)))
             otherPercent += percent
-    string += ('    - name: Other\n      color: white\n      percent: %s\n' % (round(otherPercent, 2)))
+    string += ('  languages_other_percent: %s\n' % (round(otherPercent, 2))) + string_other
     return string
-    """
-    S = 0
-    for lang in langs:
-        S += langs[lang]
-        langList.append(lang)
-        colorList.append(colorFromLang(lang))
-    for lang in langs:
-        percent = round((langs[lang]/S) * 100, 2)
-        if len(percentList) < 3:
-            percentList.append(percent)
-        else:
-            try:
-                percentList[3] = float(percentList[3]) + percent
-            except:
-                percentList.append('0')
-                percentList[3] = float(percentList[3]) + percent         
-    if len(langList) < 3:
-        for i in range(3 - len(langList)):
-            langList.append('')
-    if len(colorList) < 3:
-        for i in range(3 - len(colorList)):
-            colorList.append('')
-    if len(percentList) < 4:
-        for i in range(4 - len(percentList)):
-            percentList.append('0')
-    for i in range(len(percentList)):
-        percentList[i] = str(percentList[i]) + '%'
-    l1 = ('  languages:\n    - name: %s\n      color: %s\n      percent: %s\n' % (langList[0], colorList[0], percentList[0]))
-    l2 = ('    - name: %s\n      color: %s\n      percent: %s\n' % (langList[1], colorList[1], percentList[1]))
-    l3 = ('    - name: %s\n      color: %s\n      percent: %s\n' % (langList[2], colorList[2], percentList[2]))
-    l4 = ('    - name: Other\n      color: white\n      percent: %s\n' % (percentList[3]))
-    return (l1+l2+l3+l4)
-    """
 
 
 def toYML(repo, lines):
