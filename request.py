@@ -54,7 +54,7 @@ def handleLangAPI(langs):
         else:
             string_other += ('    - name: %s\n      color: %s\n      percent: %s\n' % (lang, colorFromLang(lang), round(percent,2)))
             otherPercent += percent
-    string += ('  languages_other_percent: %s\n' % (round(otherPercent, 2))) + string_other
+    string += ('  languages_other_percent: %s\n  languages_other:\n' % (round(otherPercent, 2))) + string_other
     return string
 
 
