@@ -1,3 +1,4 @@
+v1.0.0
 # What
 A python script accessing Github's REST API and exporting relevant data to a YML for JS to process on my own personal website.
 
