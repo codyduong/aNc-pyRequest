@@ -14,11 +14,10 @@ repos:
     - name: Python
       color: '#3572A5'
       percent: 100.0
-    - name: Other
-      color: white
-      percent: 0
+  languages_other_percent: 0
+  languages_other:
   created: Jan 03, 2021
-  updated: Jan 06, 2021
+  updated: Jan 10, 2021
 
 - name: artNcode
   private: False
@@ -27,18 +26,20 @@ repos:
   languages:
     - name: SCSS
       color: '#c6538c'
-      percent: 58.04
+      percent: 57.25
     - name: HTML
       color: '#e34c26'
-      percent: 33.0
+      percent: 33.91
     - name: Ruby
       color: '#701516'
-      percent: 8.11
-    - name: Other
-      color: white
-      percent: 0.85
+      percent: 8.0
+    - name: Shell
+      color: '#89e051'
+      percent: 0.84
+  languages_other_percent: 0
+  languages_other:
   created: Sep 04, 2020
-  updated: Jan 07, 2021
+  updated: Jan 08, 2021
 ```
 
 # Utilizing for yourself
