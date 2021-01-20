@@ -4,7 +4,6 @@ import os.path
 
 
 USERNAME = 'codyduong'
-REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
 MIN_PERCENTAGE_THRESHOLD = 0 #Percentage threshold before the lang is tossed into the other pile
 
 
@@ -14,9 +13,10 @@ def runRequest(u):
         token = f.read()
     if token: 
         #print("runRequest with Token: %s"  % (token))
+        "Private repo access is broken, even with the token. wontfix (until i have to anyway)"
         return(requests.get(u, auth=(USERNAME, token)))
     else: 
-        print("runRequest w/out Token")
+        #print("runRequest w/out Token")
         return(requests.get(u))
 
 
@@ -101,7 +101,7 @@ def convertRequest(l):
 
 
 if __name__ == "__main__":
-    r = runRequest(REPOS_LINK)
+    r = runRequest('https://api.github.com/users/%s/repos' % (USERNAME))
     if r.status_code == 200: 
         print('200 OK')
         convertRequest(r.json())
