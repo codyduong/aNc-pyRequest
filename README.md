@@ -1,7 +1,8 @@
 v1.0.1
 # What
-A python script accessing Github's REST API and exporting relevant data to a YML for JS to process on my own personal website.
-Used in conjunction with octokit/rest.js in order to ensure that the repos will display (either from rest.js or from repos.yml as a failsafe).
+A python script utilizing requests to access public repos and reformat into a YML file. This YML will then be processed by liquid+HTML or JS.
+Recommended for use in conjunction with JS accessing Github Repos actively upon script launch, but if it fails, then will rely on the YML
+file generated here.
 
 # Exported Result
 ```YML
@@ -44,7 +45,7 @@ repos:
 ```
 
 # Utilizing for yourself
-Unfortunately poetry wasn't complying so there aren't any dependencies in this repo. If you need to know, any versions of requests should work, and python 3.9+. But I reckon since it's so simple, that any combination of the versions should work... But don't quote me on that.
+Use pipenv to load the dependency file. Or some other management system if you prefer (req. requests)
 
 Simply change the relevant information:
 ```python
