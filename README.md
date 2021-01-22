@@ -1,4 +1,4 @@
-v1.0.0
+v1.0.1
 # What
 A python script accessing Github's REST API and exporting relevant data to a YML for JS to process on my own personal website.
 Used in conjunction with octokit/rest.js in order to ensure that the repos will display (either from rest.js or from repos.yml as a failsafe).
@@ -49,8 +49,7 @@ Unfortunately poetry wasn't complying so there aren't any dependencies in this r
 Simply change the relevant information:
 ```python
 6 | USERNAME = 'codyduong'
-7 | REPOS_LINK = 'https://api.github.com/users/codyduong/repos'
-8 | MIN_PERCENTAGE_THRESHOLD = 5 #Percentage threshold before the lang is tossed into the other pile
+7 | MIN_PERCENTAGE_THRESHOLD = 5 #Percentage threshold before the lang is tossed into the other pile
 ```
 For using a personal token, create a token.txt in the same directory as request.py, this step is optional and is not necessary for it to function. It is recommended if you want to access private repos.
 
