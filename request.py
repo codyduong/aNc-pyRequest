@@ -11,11 +11,11 @@ def runRequest(u):
     token = ''
     with open('token.txt', "r") as f:
         token = f.read()
-    if token: 
-        #print("runRequest with Token: %s"  % (token))
-        "Private repo access is broken, even with the token. wontfix (until i have to anyway)"
-        return(requests.get(u, headers=('Authorization: token %s' % (token))))
-    else: 
+    # if token: 
+    #     #print("runRequest with Token: %s"  % (token))
+    #     "Private repo access is broken, even with the token. wontfix (until i have to anyway)"
+    #     return(requests.get(u, headers=('Authorization: token %s' % (token))))
+    # else: 
         #print("runRequest w/out Token")
         return(requests.get(u))
 

@@ -1,4 +1,4 @@
-v1.0.1
+v1.0.2
 # What
 A python script utilizing requests to access public repos and reformat into a YML file. This YML will then be processed by liquid+HTML or JS.
 Recommended for use in conjunction with JS accessing Github Repos actively upon script launch, but if it fails, then will rely on the YML
