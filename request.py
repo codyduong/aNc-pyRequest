@@ -60,7 +60,7 @@ def handleLangAPI(langs):
 
 def toYML(repo, lines):
     final = lines
-    final.append('- name: %s\n  private: %s\n  permalink: %s\n  description: %s\n' % (repo['name'], repo['private'], repo['html_url'], repo['description']))
+    final.append('- name: %s\n  private: %s\n  permalink: %s\n  apilink: %s\n  description: %s\n' % (repo['name'], repo['private'], repo['html_url'], repo['url'], repo['description']))
     #language handling
     final.append(handleLangAPI(runRequest(repo['languages_url']).json()))
     final.append('  created: %s\n  updated: %s\n\n' % (ISO8601toString(repo['created_at']), ISO8601toString(repo['updated_at'])))
