@@ -1,4 +1,4 @@
-v1.0.2
+v1.0.3
 # What
 A python script utilizing requests to access public repos and reformat into a YML file. This YML will then be processed by liquid+HTML or JS.
 Recommended for use in conjunction with JS accessing Github Repos actively upon script launch, but if it fails, then will rely on the YML
@@ -24,24 +24,25 @@ repos:
 - name: artNcode
   private: False
   permalink: https://github.com/codyduong/artNcode
+  apilink: https://api.github.com/repos/codyduong/artNcode
   description: My website.
   languages:
     - name: SCSS
       color: '#c6538c'
-      percent: 57.25
+      percent: 57.18
     - name: HTML
       color: '#e34c26'
-      percent: 33.91
+      percent: 33.99
     - name: Ruby
       color: '#701516'
-      percent: 8.0
+      percent: 7.99
     - name: Shell
       color: '#89e051'
       percent: 0.84
   languages_other_percent: 0
   languages_other:
   created: Sep 04, 2020
-  updated: Jan 08, 2021
+  updated: Feb 02, 2021
 ```
 
 # Utilizing for yourself
